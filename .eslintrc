@@ -1,0 +1,48 @@
+{
+	"extends": "airbnb",
+	"env": {
+        "node": true,
+        "mocha": true,
+		"mongo": true,
+        "es6": true
+    },
+	"rules": {
+		"arrow-body-style": 0,
+		"arrow-parens": ["error", "as-needed", {
+			"requireForBlockBody": true
+		}],
+		"comma-dangle": ["error", "never"],
+		"consistent-return": 0,
+		"eqeqeq": 2,
+		"func-names": 0,
+		"indent": ["error", 2],
+		"linebreak-style": ["error", "unix"],
+		"max-len": [1, 120, 4],
+    	"no-alert": 0,
+    	"no-comma-dangle": 0,
+    	"no-console": 0,
+    	"no-param-reassign": [2, { "props": false}],
+    	"no-var": 0,
+    	"no-underscore-dangle": 0,
+		"object-curly-spacing": ["error", "always"],
+    	"one-var": 0,
+    	"quotes": ["error", "single", "avoid-escape"],
+		"quote-props": ["error", "as-needed", { "keywords": false, "unnecessary": true, "numbers": false }],
+    	"require-jsdoc": "off",
+		"space-before-function-paren": ["error", {
+			"anonymous": "always",
+			"named": "never",
+			"asyncArrow": "always"
+		}],
+		"space-in-parens": ["error", "never"],
+    	"strict": 0,
+        "semi": ["error", "always"],
+        "yoda": 0,
+		"jsx-a11y/href-no-hash": "off",
+		"jsx-a11y/anchor-is-valid": ["warn", { "aspects": ["invalidHref"] }],
+		"globals": {
+			"Array": true,
+			"isNaN": true
+		}
+    }
+}
