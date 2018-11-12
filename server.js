@@ -16,8 +16,8 @@ app.listen(port, () => {
   const RequestsFun = (obj) => {
     request(obj.url, (error, response = {}, body) => {
       if (error) console.log('error:', error);
-      console.log('statusCode:', response.statusCode);
-      console.log('body:', body);
+      // console.log('statusCode:', response.statusCode);
+      // console.log('body:', body);
       if (obj.active) {
         let check = false;
         for (let a = 0, b = config.length; a < b; a += 1) {
@@ -40,8 +40,10 @@ app.listen(port, () => {
   };
   if (Array.isArray(config)) {
     config.map((a) => {
-      if (a.active) {
+      if (a.active && a.name && !Requests[a.name]) {
         Requests[a.name] = setTimeout(RequestsFun, a.timeout, a);
+      } else {
+        throw new Error(`the name "${a.name}" in the file is repeated`);
       }
       return '';
     });
