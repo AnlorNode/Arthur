@@ -1,21 +1,31 @@
 const Koa = require('koa');
+const bodyParser = require('koa-bodyparser');
+const Router = require('koa-router');
 const request = require('request');
 
 const app = new Koa();
+var router = new Router();
 const config = require('./config');
-// const config = require('./config');
+
 const port = 3000;
 const Requests = {};
+app.use(bodyParser())
+  .use(router.routes())
+  .use(router.allowedMethods());
 
-app.use((ctx) => {
-  ctx.body = ' Koa';
+router.post('/', (ctx, next) => {
+  console.log('request.body', ctx.request.body);
+  ctx.body = 'post: Koa ok';
 });
-
+router.get('/', (ctx, next) => {
+  console.log('ctx.request', ctx.request.query);
+  ctx.body = 'get: Koa ok';
+});
 app.listen(port, () => {
   console.log('start port :', port);
   const RequestsFun = (obj) => {
     request(obj.url, (error, response = {}, body) => {
-      if (error) console.log('error:', error);
+      if (error) console.error('error:', error);
       // console.log('statusCode:', response.statusCode);
       // console.log('body:', body);
       if (obj.active) {
@@ -51,4 +61,3 @@ app.listen(port, () => {
     console.error('is not array config');
   }
 });
-// nodemon ./server.js
