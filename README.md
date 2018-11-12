@@ -6,6 +6,6 @@
 ## setup
 ```
 $ git clone https://github.com/AnlorNode/Arthur.git
-$ cd .\Arthur\
+$ cd ./Arthur
 $ npm i
 $ nodemon ./server.js
